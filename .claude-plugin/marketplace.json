@@ -1,0 +1,35 @@
+{
+  "name": "moneymike-plugins",
+  "description": "Claude Code plugins by Mike Garrett: work-order, work-order-jira and night-watchman.",
+  "owner": {
+    "name": "Mike Garrett"
+  },
+  "plugins": [
+    {
+      "name": "work-order",
+      "description": "The work-order ticket-as-contract specification, reference implementation, file binding, and conformance validator.",
+      "source": {
+        "source": "github",
+        "repo": "moneymikeMD/work-order"
+      }
+    },
+    {
+      "name": "work-order-jira",
+      "description": "Jira binding for the work-order ticket-as-contract specification.",
+      "source": {
+        "source": "git-subdir",
+        "url": "moneymikeMD/work-order",
+        "path": "plugins/work-order-jira"
+      }
+    },
+    {
+      "name": "night-watchman",
+      "description": "Unattended-operations engine: dispatch-contract tickets, an owner decision profile, a capability ladder, and the orchestrator/cheap-executor split.",
+      "category": "productivity",
+      "source": {
+        "source": "github",
+        "repo": "moneymikeMD/night-watchman"
+      }
+    }
+  ]
+}
