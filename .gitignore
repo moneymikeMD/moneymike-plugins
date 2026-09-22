@@ -1,0 +1,13 @@
+# Per-tool caches and local state. Every sibling repo in this workspace ignores
+# the same set; this repo had no .gitignore at all until 2026-09-22, so an
+# indexer's cache could have been committed into the one file the marketplace
+# is made of.
+.serena/
+.tokensave/
+.memorygraph/
+
+# Execution plans handed to a repo-rooted session. Local by design.
+.plan/
+
+# Claude Code's per-machine settings. The shared config is dotfiles-owned.
+.claude/settings.local.json
