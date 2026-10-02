@@ -8,13 +8,27 @@ gaining an entry here, and nowhere else. The repo's entire substance is
 `.claude-plugin/marketplace.json`, currently three entries: `work-order`
 (`github` source, whole repo), `work-order-jira` (`git-subdir` source, path
 `plugins/work-order-jira` inside the work-order repo), `night-watchman`
-(`github` source, whole repo). `README.md` and `.github/CODEOWNERS` are the only
-other tracked files.
+(`github` source, whole repo). Besides it: `README.md`, `.github/CODEOWNERS`,
+`.github/workflows/ci.yml` and `scripts/check-marketplace.py`.
 
-**There is no CI here at all.** No `.github/workflows/`, no JSON validation on
-push, no lint. A syntax error in `marketplace.json` is caught only by the next
-`/plugin marketplace add` or install attempt, not by a check on the PR. Do not
-assume a green anything — there is nothing to go green.
+## CI
+
+`.github/workflows/ci.yml` runs four jobs on every pull request, on push to
+`main`, weekly (Monday 06:17 UTC) and on demand:
+
+- `validate`: every JSON and YAML file parses.
+- `marketplace`: `scripts/check-marketplace.py` enforces the publishing contract
+  below. Unique names; no `ref` or `sha`; only `github` and `git-subdir`
+  sources; each source's `plugin.json` names itself as its entry does; no
+  plugin repo carries its own `marketplace.json`; and every dependency range
+  resolves against a `<dep>--vX.Y.Z` tag on the dependency's repo. It reads
+  public GitHub over HTTPS. The weekly run is what catches a dependency tag
+  line breaking upstream with no PR here. `--selftest` covers the range parser.
+- `no-major`: the version cap, the same job text as work-order, ai-toolkit and
+  night-watchman.
+- `no-personal-paths`: the ai-toolkit action.
+
+All four are required status checks on `main`.
 
 ## The publishing contract
 
@@ -43,23 +57,21 @@ Before adding or bumping an entry: `git ls-remote --tags` the dependency's repo
 and confirm a `<dep>--vX.Y.Z` tag exists inside the declared range. Do not trust
 the plain `vX.Y.Z` release tag as a substitute — it is not what gets checked.
 
-**Current state, verified 2026-09-21**: work-order's release workflow now tags
-`work-order--v` automatically on every root release (added in work-order#44,
-merged 2026-09-20). This is no longer untested — the very next release,
-`v1.6.0` (2026-09-21), produced `work-order--v1.6.0` in the same run, at the
-same commit. `night-watchman`'s declared range (`^1.3.0`) and
-`work-order-jira`'s own declared range (`^1.2.0`) both currently resolve, since
-`work-order--v1.3.0` through `--v1.6.0` all exist. If work-order's tagging
-workflow is ever reverted or fails silently on a future release, this
-marketplace's `night-watchman` and `work-order-jira` entries break with no
-signal here — there is no CI in this repo to catch it.
+work-order's release workflow tags `work-order--v` on every root release
+(work-order#44). Verified 2026-10-01: `night-watchman` (`^1.3.0`) and
+`work-order-jira` (`^1.2.0`) both resolve to `work-order--v1.9.0`. The
+`marketplace` CI job runs this check on every PR and weekly, so a tag line that
+stops being cut upstream turns it red here.
 
 ## Governance
 
-`main` is protected by ruleset `protect-main`: every PR needs one approving
-review plus a code-owner review (`CODEOWNERS` is `* @moneymikeMD`). Repository
-admins are bypass actors, so a maintainer can merge without waiting — treat the
-review requirement as real, because for a contributor it is.
+`main` is protected by ruleset `protect-main`: changes land through a pull
+request, deletion and force-pushes are rejected, and the four CI jobs above are
+required status checks. No approving review is required (owner decision
+2026-10-01, the same as night-watchman, work-order and switchtender);
+`CODEOWNERS` (`* @moneymikeMD`) still auto-requests the owner on every PR.
+Only accounts with write access can merge, so this does not open the repo to
+contributors. Repository admins are bypass actors.
 
 ## Version cap
 
@@ -67,6 +79,6 @@ These plugins stay below a major version bump: no commit subject matching
 `^[A-Za-z]+(\([^)]*\))?!:`, no `BREAKING CHANGE:` footer. A genuinely breaking
 change ships as a plain `feat:` describing the incompatibility in prose.
 
-Nothing enforces it here. This repo has no `no-major` job, no CI of any kind,
-and no release-please — it carries no version line at all, because one JSON
-file naming unpinned plugins has nothing to version. Hold the line by hand.
+The `no-major` CI job enforces it on every PR title and commit. There is no
+release-please and no version line here, because one JSON file naming unpinned
+plugins has nothing to version.
