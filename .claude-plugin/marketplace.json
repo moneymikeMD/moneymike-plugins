@@ -1,6 +1,6 @@
 {
   "name": "moneymike-plugins",
-  "description": "Claude Code plugins by Mike Garrett: work-order, work-order-jira and night-watchman.",
+  "description": "Claude Code plugins by Mike Garrett: work-order, work-order-jira, night-watchman and moneymike-skills.",
   "owner": {
     "name": "Mike Garrett"
   },
@@ -29,6 +29,14 @@
       "source": {
         "source": "github",
         "repo": "moneymikeMD/night-watchman"
+      }
+    },
+    {
+      "name": "moneymike-skills",
+      "description": "Personal workflow skills: PR shipping and review, Jira authoring, research files, UI bug repro on real devices, Datadog monitor and catalog hygiene, GitHub repo hardening, review writing, session retros and writing for agents.",
+      "source": {
+        "source": "github",
+        "repo": "moneymikeMD/moneymike-skills"
       }
     }
   ]
