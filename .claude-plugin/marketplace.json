@@ -1,6 +1,6 @@
 {
   "name": "moneymike-plugins",
-  "description": "Claude Code plugins by Mike Garrett: work-order, work-order-jira, night-watchman and moneymike-skills.",
+  "description": "Claude Code plugins by Mike Garrett: work-order, work-order-jira, night-watchman, moneymike-skills and session-band.",
   "owner": {
     "name": "Mike Garrett"
   },
@@ -37,6 +37,14 @@
       "source": {
         "source": "github",
         "repo": "moneymikeMD/moneymike-skills"
+      }
+    },
+    {
+      "name": "session-band",
+      "description": "A band above the prompt naming the computer, workspace and project a Claude Code session runs in.",
+      "source": {
+        "source": "github",
+        "repo": "moneymikeMD/session-band"
       }
     }
   ]
