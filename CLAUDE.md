@@ -5,11 +5,11 @@
 `moneymikeMD/moneymike-plugins`, public, created 2026-09-20. The Claude Code
 marketplace these plugins publish through: a plugin becomes installable by
 gaining an entry here, and nowhere else. The repo's entire substance is
-`.claude-plugin/marketplace.json`, currently four entries: `work-order`
+`.claude-plugin/marketplace.json`, currently five entries: `work-order`
 (`github` source, whole repo), `work-order-jira` (`git-subdir` source, path
 `plugins/work-order-jira` inside the work-order repo), `night-watchman`
 (`github` source, whole repo), `moneymike-skills` (`github` source, whole
-repo). Besides it: `README.md`, `.github/CODEOWNERS`,
+repo), `session-band` (`github` source, whole repo). Besides it: `README.md`, `.github/CODEOWNERS`,
 `.github/workflows/ci.yml` and `scripts/check-marketplace.py`.
 
 ## CI

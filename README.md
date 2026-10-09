@@ -12,3 +12,4 @@ A Claude Code plugin marketplace for Mike Garrett's plugins. Each entry points a
 | `work-order-jira` | [moneymikeMD/work-order](https://github.com/moneymikeMD/work-order/tree/main/plugins/work-order-jira) |
 | `night-watchman` | [moneymikeMD/night-watchman](https://github.com/moneymikeMD/night-watchman) |
 | `moneymike-skills` | [moneymikeMD/moneymike-skills](https://github.com/moneymikeMD/moneymike-skills) |
+| `session-band` | [moneymikeMD/session-band](https://github.com/moneymikeMD/session-band) |
