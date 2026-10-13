@@ -1,6 +1,6 @@
 {
   "name": "moneymike-plugins",
-  "description": "Claude Code plugins by Mike Garrett: work-order, work-order-jira, night-watchman, moneymike-skills and session-band.",
+  "description": "Claude Code plugins by Mike Garrett: work-order, work-order-jira, night-watchman, moneymike-skills, session-band and bash-lsp.",
   "owner": {
     "name": "Mike Garrett"
   },
@@ -45,6 +45,15 @@
       "source": {
         "source": "github",
         "repo": "moneymikeMD/session-band"
+      }
+    },
+    {
+      "name": "bash-lsp",
+      "description": "Bash language server for Claude Code: shellcheck diagnostics after each edit of a shell script, plus go-to-definition and document symbols.",
+      "source": {
+        "source": "git-subdir",
+        "url": "moneymikeMD/moneymike-skills",
+        "path": "plugins/bash-lsp"
       }
     }
   ]
