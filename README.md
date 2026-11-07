@@ -14,3 +14,4 @@ A Claude Code plugin marketplace for Mike Garrett's plugins. Each entry points a
 | `moneymike-skills` | [moneymikeMD/moneymike-skills](https://github.com/moneymikeMD/moneymike-skills) |
 | `session-band` | [moneymikeMD/session-band](https://github.com/moneymikeMD/session-band) |
 | `bash-lsp` | [moneymikeMD/moneymike-skills](https://github.com/moneymikeMD/moneymike-skills/tree/main/plugins/bash-lsp) |
+| `lamplighter` | [moneymikeMD/lamplighter](https://github.com/moneymikeMD/lamplighter/tree/main/plugin) |
