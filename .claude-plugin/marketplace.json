@@ -55,6 +55,15 @@
         "url": "moneymikeMD/moneymike-skills",
         "path": "plugins/bash-lsp"
       }
+    },
+    {
+      "name": "lamplighter",
+      "description": "Agent memory for Claude Code: pushes relevant memories into the session, exposes lampl as MCP tools, and teaches when to store.",
+      "source": {
+        "source": "git-subdir",
+        "url": "moneymikeMD/lamplighter",
+        "path": "plugin"
+      }
     }
   ]
 }
