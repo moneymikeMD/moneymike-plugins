@@ -16,7 +16,7 @@ repo's entire substance is `.claude-plugin/marketplace.json`, currently seven en
 - `marketplace`: `scripts/check-marketplace.py` enforces the publishing contract below. Unique names; no `ref` or `sha`; only `github` and `git-subdir` sources; each source's `plugin.json` names
   itself as its entry does; no plugin repo carries its own `marketplace.json`; and every dependency range resolves against a `<dep>--vX.Y.Z` tag on the dependency's repo. It reads public GitHub over
   HTTPS. The weekly run is what catches a dependency tag line breaking upstream with no PR here. `--selftest` covers the range parser.
-- `no-major`: the version cap, the same job text as work-order, ai-toolkit and night-watchman.
+- `no-major`: the version cap, the same job text as work-order and ai-toolkit.
 - `no-personal-paths`: the ai-toolkit action.
 
 All four are required status checks on `main`.
